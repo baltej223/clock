@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 30px;
+            background: radial-gradient(ellipse, #0D1E31, #111);
+            overflow: hidden;
+        }
+        
+        .cointainer {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            /* align-items: center; */
+            margin-top: 100%;
+            gap: 1%;
+        }
+        #time{
+            margin-top: 5px;
+        }
+        .redBar {
+            width: 5px;
+            height: 45px;
+            background-color: red;
+
+        }
+
+        @media screen and (max-width: 400px) {
+            .cointainer {
+                margin-top: 100%;
+            }
+        }
+        @media screen and (min-width: 800px) {
+            .cointainer {
+                margin-top: 20%;
+            }
+        }
+        /* ---------------------------- */
+    </style>
+</head>
+
+<body>
+    <center>
+        <div class="cointainer">
+            <div class="redBar"></div>
+            <div id="time"></div>
+        </div>
+    </center>
+    <script>
+        function displayTime() {
+            let today = new Date();
+            var day, hours, minutes, seconds;
+            day = today.getDay();
+            if (day='0'){
+                day = 'Sun';
+            }
+            else if (day='1'){
+                day = 'Mon';
+            }
+            else if (day='2'){
+                day = 'Tues';
+            }
+            else if (day='3'){
+                day = 'Wed';
+            }
+            else if (day='4'){
+                day = 'Thus';
+            }
+            else if (day='5'){
+                day = 'Fri';
+            }
+            else if (day='6'){
+                day = 'Sat';
+            }
+            
+            hours = today.getHours();
+            minutes = today.getMinutes();
+            seconds = today.getSeconds();
+            let time = `${hours}:${minutes}:${seconds} ${day}`;
+            document.getElementById('time').innerHTML = time;
+        }
+        displayTime();
+        setInterval(displayTime, 100);
+    </script>
+</body>
+
+</html>
